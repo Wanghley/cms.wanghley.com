@@ -20,9 +20,7 @@ module.exports = ({ env }) => ({
         // You need to enable "Autocomplete API" and "Places API" in your Google Cloud Console
         googleMapsApiKey: env("GoogleMapsApiKey"),
         // See https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
-        autocompletionRequestOptions: {
-          language: 'en',
-        },
+        autocompletionRequestOptions: {},
       },
     },
     // ...
