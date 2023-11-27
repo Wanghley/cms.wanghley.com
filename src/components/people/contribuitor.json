@@ -1,0 +1,60 @@
+{
+  "collectionName": "components_people_contribuitors",
+  "info": {
+    "displayName": "Contribuitor",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "Github": {
+      "type": "string",
+      "regex": "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "Profile_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Relationship": {
+      "type": "customField",
+      "options": [
+        "Mentor",
+        "Colleague/Co-worker",
+        "Supervisor/Manager",
+        "Networking Contact",
+        "Client/Customer",
+        "Business Partner",
+        "Collaborator",
+        "Mentee",
+        "Industry Peers",
+        "Advisor/Consultant",
+        "Family - Spouse/Partner",
+        "Family - Parent/Child",
+        "Family - Sibling",
+        "Friend",
+        "Roommate/Housemate",
+        "Neighbor",
+        "Classmate/Schoolmate",
+        "Club or Hobby Group",
+        "Long-Distance Friend/Relationship",
+        "Mentor/Mentee",
+        "Coach/Trainee",
+        "Life Partner"
+      ],
+      "required": true,
+      "customField": "plugin::multi-select.multi-select"
+    }
+  }
+}

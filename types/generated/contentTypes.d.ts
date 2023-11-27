@@ -683,6 +683,7 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
     singularName: 'certificate';
     pluralName: 'certificates';
     displayName: 'Certificate';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -695,6 +696,64 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
   attributes: {
     Name: Attribute.String &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Institution: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Logo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Category: Attribute.Enumeration<
+      [
+        'Academic',
+        'Professional Development',
+        'Recognition',
+        'Participation',
+        'Compliance',
+        'Health and Safety',
+        'Community Service',
+        'Language Proficiency',
+        'Technology and Innovation',
+        'Leadership',
+        'Arts and Creativity',
+        'Sustainability',
+        'Sports and Fitness',
+        'Specialized Industries',
+        'Customer Service and Sales',
+        'Financial and Business'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    URL: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    CERT_ID: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -719,6 +778,343 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
       'api::certificate.certificate',
       'oneToMany',
       'api::certificate.certificate'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiInstitutionInstitution extends Schema.CollectionType {
+  collectionName: 'institutions';
+  info: {
+    singularName: 'institution';
+    pluralName: 'institutions';
+    displayName: 'Institution';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String & Attribute.Required;
+    Location: Attribute.JSON &
+      Attribute.CustomField<'plugin::location-field.location'>;
+    Logo: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::institution.institution',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::institution.institution',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'Project';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Category: Attribute.Enumeration<
+      [
+        'Software Development',
+        'Design and Creativity',
+        'Engineering and Hardware',
+        'Data Science and Analytics',
+        'Internet of Things (IoT)',
+        'Digital Media Production',
+        'Environmental and Sustainability',
+        'Health and Biotechnology',
+        'Marketing and Campaigns',
+        'Education and E-Learning',
+        'Other'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Description: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Files: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Video: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Skills: Attribute.JSON &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'Programming Languages (e.g., Python, Java, JavaScript, C++)',
+          'Web Development (HTML, CSS, JavaScript, React, Angular)',
+          'Mobile App Development (iOS, Android, Swift, Kotlin)',
+          'Database Management (SQL, MongoDB)',
+          'Data Analysis and Visualization (Python, R, Tableau)',
+          'Machine Learning and AI (TensorFlow, PyTorch)',
+          'Cloud Computing (AWS, Azure, Google Cloud)',
+          'DevOps (Docker, Jenkins, Kubernetes)',
+          'Cybersecurity (Network Security, Encryption)',
+          'Robotics (ROS, Arduino, Raspberry Pi)',
+          'IoT Development (Arduino, MQTT, Node-RED)',
+          '3D Modeling and Animation (Blender, Maya, Unity)',
+          'Graphic Design (Adobe Creative Suite)',
+          'UI/UX Design (Sketch, Figma, Adobe XD)',
+          'Video Editing and Production (Premiere Pro, Final Cut Pro)',
+          'Audio Production (Pro Tools, Audacity)',
+          'Product Design and CAD (AutoCAD, SolidWorks)',
+          'Game Development (Unity, Unreal Engine)',
+          'Blockchain and Cryptocurrency',
+          'Agile and Scrum Methodologies',
+          'Communication',
+          'Collaboration',
+          'Problem Solving',
+          'Creativity',
+          'Time Management',
+          'Critical Thinking',
+          'Adaptability',
+          'Leadership',
+          'Attention to Detail',
+          'Teamwork',
+          'Emotional Intelligence',
+          'Presentation Skills',
+          'Decision Making',
+          'Customer Service',
+          'Project Management',
+          'Conflict Resolution',
+          'Networking',
+          'Initiative',
+          'Learning Agility',
+          'Resilience'
+        ]
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Tools: Attribute.JSON &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'Visual Studio Code',
+          'IntelliJ IDEA',
+          'Eclipse',
+          'Xcode',
+          'Git',
+          'GitHub',
+          'GitLab',
+          'Bitbucket',
+          'Sublime Text',
+          'Atom',
+          'Bootstrap',
+          'Sass/LESS',
+          'Android Studio',
+          'Flutter',
+          'React Native',
+          'MySQL',
+          'PostgreSQL',
+          'MongoDB',
+          'Microsoft SQL Server',
+          'Jupyter Notebooks',
+          'RStudio',
+          'Tableau',
+          'Pandas',
+          'TensorFlow',
+          'PyTorch',
+          'Scikit-learn',
+          'Keras',
+          'Amazon Web Services (AWS)',
+          'Microsoft Azure',
+          'Google Cloud Platform (GCP)',
+          'IBM Cloud',
+          'Docker',
+          'Jenkins',
+          'Kubernetes',
+          'Ansible',
+          'Wireshark',
+          'Metasploit',
+          'Snort',
+          'Nmap',
+          'Arduino',
+          'Raspberry Pi',
+          'Node-RED',
+          'MQTT',
+          'Blender',
+          'Maya',
+          'Cinema 4D',
+          '3ds Max',
+          'Adobe Creative Suite (Photoshop, Illustrator, InDesign)',
+          'CorelDRAW',
+          'GIMP',
+          'Sketch',
+          'Figma',
+          'Adobe XD',
+          'InVision',
+          'Adobe Premiere Pro',
+          'Final Cut Pro',
+          'DaVinci Resolve',
+          'Sony Vegas Pro',
+          'Pro Tools',
+          'Ableton Live',
+          'FL Studio',
+          'Audacity',
+          'AutoCAD',
+          'SolidWorks',
+          'Fusion 360',
+          'Rhino',
+          'Unity',
+          'Unreal Engine',
+          'Godot',
+          'Phaser',
+          'Ethereum',
+          'Solidity',
+          'Truffle',
+          'Remix',
+          'Slack',
+          'Microsoft Teams',
+          'Zoom',
+          'Trello',
+          'Python',
+          'Java',
+          'JavaScript',
+          'C++',
+          'HTML',
+          'CSS',
+          'Swift',
+          'Kotlin',
+          'SQL',
+          'Blockchain Development',
+          'Cybersecurity',
+          'Machine Learning',
+          'Artificial Intelligence',
+          'Internet of Things (IoT)',
+          'Data Science',
+          'DevOps',
+          '3D Modeling',
+          'Graphic Design',
+          'UI/UX Design',
+          'Video Production',
+          'Audio Production',
+          'Project Management'
+        ]
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Github: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Start_at: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Done_at: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Status: Attribute.Enumeration<['Backlog', 'ToDo', 'Doing', 'Done']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Backlog'>;
+    Challenges_Solutions: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Outcome_Impact: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Add_links: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Contribuitors: Attribute.Component<'people.contribuitor', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::project.project'
     >;
     locale: Attribute.String;
   };
@@ -789,6 +1185,80 @@ export interface ApiSkillSkill extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestimonialTestimonial extends Schema.CollectionType {
+  collectionName: 'testimonials';
+  info: {
+    singularName: 'testimonial';
+    pluralName: 'testimonials';
+    displayName: 'Testimonial';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Position: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Institution: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Testimonial: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Public: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -806,7 +1276,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::certificate.certificate': ApiCertificateCertificate;
+      'api::institution.institution': ApiInstitutionInstitution;
+      'api::project.project': ApiProjectProject;
       'api::skill.skill': ApiSkillSkill;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }
 }

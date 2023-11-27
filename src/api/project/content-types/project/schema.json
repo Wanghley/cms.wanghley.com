@@ -1,0 +1,325 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "Category": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Software Development",
+        "Design and Creativity",
+        "Engineering and Hardware",
+        "Data Science and Analytics",
+        "Internet of Things (IoT)",
+        "Digital Media Production",
+        "Environmental and Sustainability",
+        "Health and Biotechnology",
+        "Marketing and Campaigns",
+        "Education and E-Learning",
+        "Other"
+      ],
+      "required": true
+    },
+    "Description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks",
+      "required": true
+    },
+    "Files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Video": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "regex": "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "Skills": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "options": [
+        "Programming Languages (e.g., Python, Java, JavaScript, C++)",
+        "Web Development (HTML, CSS, JavaScript, React, Angular)",
+        "Mobile App Development (iOS, Android, Swift, Kotlin)",
+        "Database Management (SQL, MongoDB)",
+        "Data Analysis and Visualization (Python, R, Tableau)",
+        "Machine Learning and AI (TensorFlow, PyTorch)",
+        "Cloud Computing (AWS, Azure, Google Cloud)",
+        "DevOps (Docker, Jenkins, Kubernetes)",
+        "Cybersecurity (Network Security, Encryption)",
+        "Robotics (ROS, Arduino, Raspberry Pi)",
+        "IoT Development (Arduino, MQTT, Node-RED)",
+        "3D Modeling and Animation (Blender, Maya, Unity)",
+        "Graphic Design (Adobe Creative Suite)",
+        "UI/UX Design (Sketch, Figma, Adobe XD)",
+        "Video Editing and Production (Premiere Pro, Final Cut Pro)",
+        "Audio Production (Pro Tools, Audacity)",
+        "Product Design and CAD (AutoCAD, SolidWorks)",
+        "Game Development (Unity, Unreal Engine)",
+        "Blockchain and Cryptocurrency",
+        "Agile and Scrum Methodologies",
+        "Communication",
+        "Collaboration",
+        "Problem Solving",
+        "Creativity",
+        "Time Management",
+        "Critical Thinking",
+        "Adaptability",
+        "Leadership",
+        "Attention to Detail",
+        "Teamwork",
+        "Emotional Intelligence",
+        "Presentation Skills",
+        "Decision Making",
+        "Customer Service",
+        "Project Management",
+        "Conflict Resolution",
+        "Networking",
+        "Initiative",
+        "Learning Agility",
+        "Resilience"
+      ],
+      "required": true,
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "Tools": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "options": [
+        "Visual Studio Code",
+        "IntelliJ IDEA",
+        "Eclipse",
+        "Xcode",
+        "Git",
+        "GitHub",
+        "GitLab",
+        "Bitbucket",
+        "Sublime Text",
+        "Atom",
+        "Bootstrap",
+        "Sass/LESS",
+        "Android Studio",
+        "Flutter",
+        "React Native",
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB",
+        "Microsoft SQL Server",
+        "Jupyter Notebooks",
+        "RStudio",
+        "Tableau",
+        "Pandas",
+        "TensorFlow",
+        "PyTorch",
+        "Scikit-learn",
+        "Keras",
+        "Amazon Web Services (AWS)",
+        "Microsoft Azure",
+        "Google Cloud Platform (GCP)",
+        "IBM Cloud",
+        "Docker",
+        "Jenkins",
+        "Kubernetes",
+        "Ansible",
+        "Wireshark",
+        "Metasploit",
+        "Snort",
+        "Nmap",
+        "Arduino",
+        "Raspberry Pi",
+        "Node-RED",
+        "MQTT",
+        "Blender",
+        "Maya",
+        "Cinema 4D",
+        "3ds Max",
+        "Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
+        "CorelDRAW",
+        "GIMP",
+        "Sketch",
+        "Figma",
+        "Adobe XD",
+        "InVision",
+        "Adobe Premiere Pro",
+        "Final Cut Pro",
+        "DaVinci Resolve",
+        "Sony Vegas Pro",
+        "Pro Tools",
+        "Ableton Live",
+        "FL Studio",
+        "Audacity",
+        "AutoCAD",
+        "SolidWorks",
+        "Fusion 360",
+        "Rhino",
+        "Unity",
+        "Unreal Engine",
+        "Godot",
+        "Phaser",
+        "Ethereum",
+        "Solidity",
+        "Truffle",
+        "Remix",
+        "Slack",
+        "Microsoft Teams",
+        "Zoom",
+        "Trello",
+        "Python",
+        "Java",
+        "JavaScript",
+        "C++",
+        "HTML",
+        "CSS",
+        "Swift",
+        "Kotlin",
+        "SQL",
+        "Blockchain Development",
+        "Cybersecurity",
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Internet of Things (IoT)",
+        "Data Science",
+        "DevOps",
+        "3D Modeling",
+        "Graphic Design",
+        "UI/UX Design",
+        "Video Production",
+        "Audio Production",
+        "Project Management"
+      ],
+      "required": true,
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "Github": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "regex": "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "Start_at": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "Done_at": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "Status": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Backlog",
+        "ToDo",
+        "Doing",
+        "Done"
+      ],
+      "required": true,
+      "default": "Backlog"
+    },
+    "Challenges_Solutions": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks"
+    },
+    "Outcome_Impact": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks",
+      "required": true
+    },
+    "Add_links": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks"
+    },
+    "Contribuitors": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "people.contribuitor"
+    }
+  }
+}
