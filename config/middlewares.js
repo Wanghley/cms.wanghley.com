@@ -19,7 +19,13 @@ module.exports = [
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
-  'strapi::body',
+  {
+    name: 'strapi::body',
+    config: {
+      jsonLimit: '20mb',
+      csvLimit: '20mb',
+    },
+  },
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
