@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@ckeditor/strapi-plugin-ckeditor": "^0.0.10",
     "@strapi/plugin-cloud": "4.15.5",
     "@strapi/plugin-i18n": "4.15.5",
     "@strapi/plugin-users-permissions": "4.15.5",
@@ -33,7 +34,7 @@
     "uuid": "d0aec34d-cbf3-454e-9d38-0044a083a20e"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
+    "node": ">=17.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
