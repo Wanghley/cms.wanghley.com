@@ -1340,6 +1340,7 @@ export interface ApiTimelineTimeline extends Schema.CollectionType {
     singularName: 'timeline';
     pluralName: 'timelines';
     displayName: 'Timeline';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1350,14 +1351,14 @@ export interface ApiTimelineTimeline extends Schema.CollectionType {
     };
   };
   attributes: {
-    Date: Attribute.Date &
+    Name: Attribute.Blocks &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Name: Attribute.Blocks &
+    Year: Attribute.Integer &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
