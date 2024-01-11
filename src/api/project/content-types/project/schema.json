@@ -47,15 +47,6 @@
       ],
       "required": true
     },
-    "Description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "blocks",
-      "required": true
-    },
     "Files": {
       "type": "media",
       "multiple": true,
@@ -303,7 +294,7 @@
       "type": "blocks",
       "required": true
     },
-    "Add_links": {
+    "demo_link": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -320,6 +311,16 @@
         }
       },
       "component": "people.contribuitor"
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "maxLength": 250
     }
   }
 }
