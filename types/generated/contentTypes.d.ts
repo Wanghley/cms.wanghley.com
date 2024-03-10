@@ -890,112 +890,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
-export interface ApiCertificateCertificate extends Schema.CollectionType {
-  collectionName: 'certificates';
-  info: {
-    singularName: 'certificate';
-    pluralName: 'certificates';
-    displayName: 'Certificate';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    Name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Institution: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Date: Attribute.Date &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Logo: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Category: Attribute.Enumeration<
-      [
-        'Academic',
-        'Professional Development',
-        'Recognition',
-        'Participation',
-        'Compliance',
-        'Health and Safety',
-        'Community Service',
-        'Language Proficiency',
-        'Technology and Innovation',
-        'Leadership',
-        'Arts and Creativity',
-        'Sustainability',
-        'Sports and Fitness',
-        'Specialized Industries',
-        'Customer Service and Sales',
-        'Financial and Business'
-      ]
-    > &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    URL: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    CERT_ID: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::certificate.certificate',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::certificate.certificate',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::certificate.certificate',
-      'oneToMany',
-      'api::certificate.certificate'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiInstitutionInstitution extends Schema.CollectionType {
   collectionName: 'institutions';
   info: {
@@ -1035,7 +929,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
   info: {
     singularName: 'project';
     pluralName: 'projects';
-    displayName: 'Project';
+    displayName: 'Portfolio';
     description: '';
   };
   options: {
@@ -1054,198 +948,37 @@ export interface ApiProjectProject extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Category: Attribute.Enumeration<
-      [
-        'Software Development',
-        'Design and Creativity',
-        'Engineering and Hardware',
-        'Data Science and Analytics',
-        'Internet of Things (IoT)',
-        'Digital Media Production',
-        'Environmental and Sustainability',
-        'Health and Biotechnology',
-        'Marketing and Campaigns',
-        'Education and E-Learning',
-        'Other'
-      ]
-    > &
+    Featured: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Start: Attribute.Date &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Files: Attribute.Media &
+    End: Attribute.Date &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Video: Attribute.String &
+    Media: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Skills: Attribute.JSON &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          'Programming Languages (e.g., Python, Java, JavaScript, C++)',
-          'Web Development (HTML, CSS, JavaScript, React, Angular)',
-          'Mobile App Development (iOS, Android, Swift, Kotlin)',
-          'Database Management (SQL, MongoDB)',
-          'Data Analysis and Visualization (Python, R, Tableau)',
-          'Machine Learning and AI (TensorFlow, PyTorch)',
-          'Cloud Computing (AWS, Azure, Google Cloud)',
-          'DevOps (Docker, Jenkins, Kubernetes)',
-          'Cybersecurity (Network Security, Encryption)',
-          'Robotics (ROS, Arduino, Raspberry Pi)',
-          'IoT Development (Arduino, MQTT, Node-RED)',
-          '3D Modeling and Animation (Blender, Maya, Unity)',
-          'Graphic Design (Adobe Creative Suite)',
-          'UI/UX Design (Sketch, Figma, Adobe XD)',
-          'Video Editing and Production (Premiere Pro, Final Cut Pro)',
-          'Audio Production (Pro Tools, Audacity)',
-          'Product Design and CAD (AutoCAD, SolidWorks)',
-          'Game Development (Unity, Unreal Engine)',
-          'Blockchain and Cryptocurrency',
-          'Agile and Scrum Methodologies',
-          'Communication',
-          'Collaboration',
-          'Problem Solving',
-          'Creativity',
-          'Time Management',
-          'Critical Thinking',
-          'Adaptability',
-          'Leadership',
-          'Attention to Detail',
-          'Teamwork',
-          'Emotional Intelligence',
-          'Presentation Skills',
-          'Decision Making',
-          'Customer Service',
-          'Project Management',
-          'Conflict Resolution',
-          'Networking',
-          'Initiative',
-          'Learning Agility',
-          'Resilience'
-        ]
-      > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Tools: Attribute.JSON &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          'Visual Studio Code',
-          'IntelliJ IDEA',
-          'Eclipse',
-          'Xcode',
-          'Git',
-          'GitHub',
-          'GitLab',
-          'Bitbucket',
-          'Sublime Text',
-          'Atom',
-          'Bootstrap',
-          'Sass/LESS',
-          'Android Studio',
-          'Flutter',
-          'React Native',
-          'MySQL',
-          'PostgreSQL',
-          'MongoDB',
-          'Microsoft SQL Server',
-          'Jupyter Notebooks',
-          'RStudio',
-          'Tableau',
-          'Pandas',
-          'TensorFlow',
-          'PyTorch',
-          'Scikit-learn',
-          'Keras',
-          'Amazon Web Services (AWS)',
-          'Microsoft Azure',
-          'Google Cloud Platform (GCP)',
-          'IBM Cloud',
-          'Docker',
-          'Jenkins',
-          'Kubernetes',
-          'Ansible',
-          'Wireshark',
-          'Metasploit',
-          'Snort',
-          'Nmap',
-          'Arduino',
-          'Raspberry Pi',
-          'Node-RED',
-          'MQTT',
-          'Blender',
-          'Maya',
-          'Cinema 4D',
-          '3ds Max',
-          'Adobe Creative Suite (Photoshop, Illustrator, InDesign)',
-          'CorelDRAW',
-          'GIMP',
-          'Sketch',
-          'Figma',
-          'Adobe XD',
-          'InVision',
-          'Adobe Premiere Pro',
-          'Final Cut Pro',
-          'DaVinci Resolve',
-          'Sony Vegas Pro',
-          'Pro Tools',
-          'Ableton Live',
-          'FL Studio',
-          'Audacity',
-          'AutoCAD',
-          'SolidWorks',
-          'Fusion 360',
-          'Rhino',
-          'Unity',
-          'Unreal Engine',
-          'Godot',
-          'Phaser',
-          'Ethereum',
-          'Solidity',
-          'Truffle',
-          'Remix',
-          'Slack',
-          'Microsoft Teams',
-          'Zoom',
-          'Trello',
-          'Python',
-          'Java',
-          'JavaScript',
-          'C++',
-          'HTML',
-          'CSS',
-          'Swift',
-          'Kotlin',
-          'SQL',
-          'Blockchain Development',
-          'Cybersecurity',
-          'Machine Learning',
-          'Artificial Intelligence',
-          'Internet of Things (IoT)',
-          'Data Science',
-          'DevOps',
-          '3D Modeling',
-          'Graphic Design',
-          'UI/UX Design',
-          'Video Production',
-          'Audio Production',
-          'Project Management'
-        ]
-      > &
+    skills: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::skill.skill'
+    >;
+    Description: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1257,60 +990,17 @@ export interface ApiProjectProject extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Start_at: Attribute.Date &
+    Demo: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Done_at: Attribute.Date &
+    Teaser: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }>;
-    Status: Attribute.Enumeration<['Backlog', 'ToDo', 'Doing', 'Done']> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<'Backlog'>;
-    Challenges_Solutions: Attribute.Blocks &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Outcome_Impact: Attribute.Blocks &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    demo_link: Attribute.Blocks &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Contribuitors: Attribute.Component<'people.contribuitor', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        maxLength: 250;
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1342,6 +1032,7 @@ export interface ApiSkillSkill extends Schema.CollectionType {
     singularName: 'skill';
     pluralName: 'skills';
     displayName: 'Skill';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1360,7 +1051,7 @@ export interface ApiSkillSkill extends Schema.CollectionType {
         };
       }>;
     Type: Attribute.Enumeration<
-      ['Management', 'Technical', 'Problem-solving', 'Soft', 'Others']
+      ['Engineering', 'Software', 'Maker', 'Soft-skills', 'Others']
     > &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1372,6 +1063,26 @@ export interface ApiSkillSkill extends Schema.CollectionType {
       ['Basic', 'Intermediate', 'Advanced', 'Proficient']
     > &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Featured: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    PositionFeatured: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
+    Icon: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1550,7 +1261,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::blog.blog': ApiBlogBlog;
-      'api::certificate.certificate': ApiCertificateCertificate;
       'api::institution.institution': ApiInstitutionInstitution;
       'api::project.project': ApiProjectProject;
       'api::skill.skill': ApiSkillSkill;
